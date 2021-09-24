@@ -6,7 +6,6 @@ import {
   CardBody,
   CardTitle,
   Col,
-  Input,
   InputGroup,
   InputGroupAddon,
   InputGroupText,

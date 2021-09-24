@@ -16,19 +16,19 @@ const HomePage = () => {
 
         <div className={styles.grid}>
           <a href="/all" className={styles.card}>
-            <h2>All &rarr;</h2>
+            <h2>All</h2>
             <p>
               View list of books and magazines together sorted by their title
             </p>
           </a>
 
           <a href="/books-magazines" className={styles.card}>
-            <h2>Books and magazines &rarr;</h2>
+            <h2>Books and magazines</h2>
             <p>View a list of books and a list of magazines</p>
           </a>
 
           <a href="/books" className={styles.card}>
-            <h2>Books &rarr;</h2>
+            <h2>Books</h2>
             <p>
               View books and search for a book using ISBN number or by author's
               email
@@ -36,7 +36,7 @@ const HomePage = () => {
           </a>
 
           <a href="/magazines" className={styles.card}>
-            <h2>Magazines &rarr;</h2>
+            <h2>Magazines</h2>
             <p>
               View magazines and search for a magazine using ISBN number or by
               author's email
