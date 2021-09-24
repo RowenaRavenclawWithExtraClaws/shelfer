@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Button,
   Card,
@@ -18,14 +18,28 @@ import styles from "../styles/Home.module.css";
 
 const MagazinesPage = () => {
   const [data, setData] = useState({ items: [] });
+  const [fetching, toggleFetching] = useState(true);
+  const isbnInputEl = useRef<HTMLInputElement>(null);
+  const authorInputEl = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetch("https://csv-operator.herokuapp.com/magazines").then((res) =>
-      res.json().then((body) => setData(body))
+      res.json().then((body) => {
+        setData(body);
+        toggleFetching(false);
+      })
     );
   }, []);
 
-  if (data.items.length === 0) return <FetchIndicator />;
+  const searchItems = (word: string, itemType: string, searchType: string) => {
+    if (word.length) {
+      fetch(
+        `https://csv-operator.herokuapp.com/${itemType}?${searchType}=${word}`
+      ).then((res) => res.json().then((body) => setData(body)));
+    }
+  };
+
+  if (fetching) return <FetchIndicator />;
 
   return (
     <div className={styles.container}>
@@ -51,9 +65,23 @@ const MagazinesPage = () => {
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText>ISBN</InputGroupText>
                     </InputGroupAddon>
-                    <Input placeholder="Enter magazine ISBN" />
+                    <input
+                      ref={isbnInputEl}
+                      placeholder="Enter magazine isbn"
+                    />
                     <InputGroupAddon addonType="append">
-                      <Button color="primary">Search</Button>
+                      <Button
+                        color="primary"
+                        onClick={() =>
+                          searchItems(
+                            isbnInputEl.current?.value as string,
+                            "magazines",
+                            "isbn"
+                          )
+                        }
+                      >
+                        Search
+                      </Button>
                     </InputGroupAddon>
                   </InputGroup>
                 </Col>
@@ -62,15 +90,33 @@ const MagazinesPage = () => {
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText>Author</InputGroupText>
                     </InputGroupAddon>
-                    <Input placeholder="Enter magazine author" />
+                    <input
+                      ref={authorInputEl}
+                      placeholder="Enter magazine author"
+                    />
                     <InputGroupAddon addonType="append">
-                      <Button color="primary">Search</Button>
+                      <Button
+                        color="primary"
+                        onClick={() =>
+                          searchItems(
+                            authorInputEl.current?.value as string,
+                            "magazines",
+                            "author"
+                          )
+                        }
+                      >
+                        Search
+                      </Button>
                     </InputGroupAddon>
                   </InputGroup>
                 </Col>
               </Row>
             </CardTitle>
-            <CustomTable data={data.items} />
+            {data.items.length !== 0 ? (
+              <CustomTable data={data.items} />
+            ) : (
+              <h3>There is no magazines!</h3>
+            )}
           </CardBody>
         </Card>
       </main>
