@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 const HomePage = () => {
@@ -15,33 +16,41 @@ const HomePage = () => {
         <p className={styles.description}>view books, magazines and more!</p>
 
         <div className={styles.grid}>
-          <a href="/all" className={styles.card}>
-            <h2>All</h2>
-            <p>
-              View list of books and magazines together sorted by their title
-            </p>
-          </a>
+          <Link href="/all">
+            <div className={styles.card}>
+              <h2>All</h2>
+              <p>
+                View list of books and magazines together sorted by their title
+              </p>
+            </div>
+          </Link>
 
-          <a href="/books-magazines" className={styles.card}>
-            <h2>Books and magazines</h2>
-            <p>View a list of books and a list of magazines</p>
-          </a>
+          <Link href="/books-magazines">
+            <div className={styles.card}>
+              <h2>Books and magazines</h2>
+              <p>View a list of books and a list of magazines</p>
+            </div>
+          </Link>
 
-          <a href="/books" className={styles.card}>
-            <h2>Books</h2>
-            <p>
-              View books and search for a book using ISBN number or by author's
-              email
-            </p>
-          </a>
+          <Link href="/books">
+            <div className={styles.card}>
+              <h2>Books</h2>
+              <p>
+                View books and search for a book using ISBN number or by
+                author's email
+              </p>
+            </div>
+          </Link>
 
-          <a href="/magazines" className={styles.card}>
-            <h2>Magazines</h2>
-            <p>
-              View magazines and search for a magazine using ISBN number or by
-              author's email
-            </p>
-          </a>
+          <Link href="/magazines">
+            <div className={styles.card}>
+              <h2>Magazines</h2>
+              <p>
+                View magazines and search for a magazine using ISBN number or by
+                author's email
+              </p>
+            </div>
+          </Link>
         </div>
       </main>
     </div>
