@@ -52,7 +52,7 @@ const BooksPage = () => {
 
         <p className={styles.description}>
           View books and search for a book using ISBN number or by author's
-          email
+          email &apos;
         </p>
 
         <Card>
