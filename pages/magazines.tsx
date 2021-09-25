@@ -52,7 +52,7 @@ const MagazinesPage = () => {
 
         <p className={styles.description}>
           View magazines and search for a magazine using ISBN number or by
-          author's email
+          author's email &apos;
         </p>
 
         <Card>
