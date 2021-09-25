@@ -51,8 +51,8 @@ const BooksPage = () => {
         <h1 className={styles.title}>Books</h1>
 
         <p className={styles.description}>
-          View books and search for a book using ISBN number or by author's
-          email &quot;
+          View books and search for a book using ISBN number or by {"author's"}
+          email
         </p>
 
         <Card>
