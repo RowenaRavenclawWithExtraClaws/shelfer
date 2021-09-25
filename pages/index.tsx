@@ -37,7 +37,7 @@ const HomePage = () => {
               <h2>Books</h2>
               <p>
                 View books and search for a book using ISBN number or by
-                author's email
+                author's email &apos;
               </p>
             </div>
           </Link>
@@ -47,7 +47,7 @@ const HomePage = () => {
               <h2>Magazines</h2>
               <p>
                 View magazines and search for a magazine using ISBN number or by
-                author's email
+                author's email &apos;
               </p>
             </div>
           </Link>
